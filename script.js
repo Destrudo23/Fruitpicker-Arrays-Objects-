@@ -3,6 +3,7 @@ import {emojiData} from "./data.js"
 
 const radioButtonsList = document.getElementById("color-radios");
 const getImageBtn = document.getElementById("get-image-btn")
+const fruitsOnlyOption = document.getElementById("fruits-only-option")
 
 
 // create the array of the colors
@@ -60,11 +61,14 @@ radioButtonsList.addEventListener("change", highlightCheckedOption)
   }
 
 
-// getting the value of the checked radio when button is clicked  
+// chekcing if Fruits only is checked and getting the value of the checked radio when button is clicked  
 
   getImageBtn.addEventListener("click", getMatchingEmoji) 
 
   function getMatchingEmoji(e) {
+    const isFruit = fruitsOnlyOption.checked
+    console.log(isFruit)
+
     if (document.querySelector('input[type="radio"]:checked')) {
       const selectedColor = document.querySelector('input[type="radio"]:checked').value
       console.log(selectedColor)
