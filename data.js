@@ -34,4 +34,9 @@ export const emojiData = [
     isFruit: false,
     image: "🧅",
   },
+  {
+    colorTags: ["blue"],
+    isFruit: true,
+    image: "🍇",
+  },
 ]
