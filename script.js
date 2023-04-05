@@ -54,23 +54,41 @@ radioButtonsList.addEventListener("change", highlightCheckedOption)
       for (let radio of radios) {
         radio.classList.remove("highlight")
       }
-
-
     document.getElementById(e.target.id).parentElement.classList.add("highlight")
-            //console.log(e.target.id)
   }
 
 
-// chekcing if Fruits only is checked and getting the value of the checked radio when button is clicked  
+// checking if Fruits only is checked and getting the value of the checked radio when button is clicked
 
-  getImageBtn.addEventListener("click", getMatchingEmoji) 
+getImageBtn.addEventListener("click", renderFruit) 
 
-  function getMatchingEmoji(e) {
+function getMatchingEmoji(e) {
+   if (document.querySelector('input[type="radio"]:checked')) {
+    const selectedColor = document.querySelector('input[type="radio"]:checked').value
     const isFruit = fruitsOnlyOption.checked
-    console.log(isFruit)
 
-    if (document.querySelector('input[type="radio"]:checked')) {
-      const selectedColor = document.querySelector('input[type="radio"]:checked').value
-      console.log(selectedColor)
+// iterating through data array and filter by color
+    const matchingEmojis = emojiData.filter(function(emoji){
+      if (isFruit) {
+        return emoji.colorTags.includes(selectedColor) && emoji.isFruit
+        }
+        else {
+          return emoji.colorTags.includes(selectedColor)
+        }
+      }
+      )
+      return matchingEmojis
     }
   }
+
+function getSingleFruitObject() {
+  const fruitArray = getMatchingEmoji()
+  if (fruitArray.length === 1){
+    console.log(fruitArray[0])
+  }
+  // starting point next session
+}
+
+function renderFruit() {
+  getSingleFruitObject() // temp
+}
